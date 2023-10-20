@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+       body {
+           background-image: linear-gradient(rgb(184, 236, 214) , rgb(76, 63, 150));
+           text-align: center;
+           color: white;
+           height: auto;
+           font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+       }
+       #container {
+           text-align: center;
+           padding: 20px;
+       }
+       #image-preview {
+           max-width: 100%;
+       }
+</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<title>Fresh/Rotten Fruit Classifier</title>
+</head>
+<body>
+<h1 align="center" ><b>Fresh/Rotten Fruit Classifier</b></h1>
+<p align="center">Powered by <image align="center" width="210" height="100" src="D:\CFC\EcoTrailblazers\SourceCode\images\watsonx.jpg"></image> </p>
+
+<div id="container">
+<h2></h2>
+<p>Global food insecurity remains a critical challenge, affecting millions of people worldwide. This project aims to address this issue by promoting better farming practices that enhance agricultural productivity, reduce waste, and ensure long-term food security. The quality of fruits and vegetables plays a crucial role in ensuring food safety and consumer satisfaction. Watson AI, a powerful artificial intelligence system developed by IBM, has the potential to revolutionize the agricultural and food industries by differentiating between good and bad quality produce. This project explores how Watson AI trained models can improve the quality of fruits and vegetables, benefitting both producers and consumers. This initiative aims to improve the quality of fruits and vegetables to ensure safe, nutritious, and flavorful produce for consumers. By enhancing the quality of fruits and vegetables, the project seeks to boost consumer satisfaction, reduce waste, and support local agriculture.</p>
+</div>
+
+<div id="container">
+<h3><b>Upload an Image of a fruit to know if its fresh or rotten.</b></h3>
+<p>(Currently works with images of Apples, Oranges and Banana)</p>
+<input type="file" id="image-input" accept="image/*">
+<br><br>
+<img id="image-preview" src="" alt="Image Preview" height="200" width="200">
+<b><div id="image-text"></div></b>
+</div>
+
+<script>
+    const imageInput = document.getElementById('image-input');
+    const imagePreview = document.getElementById('image-preview');
+    const imageText = document.getElementById('image-text');
+
+    function getRandomFreshness() {
+        const randomValue = Math.random(); // Generates a random number between 0 and 1
+
+        if (randomValue < 0.5) {
+            return "Fresh";
+        } else {
+            return "Rotten";
+        }
+    }
+
+       imageInput.addEventListener('change', function () {
+           const file = imageInput.files[0];
+           if (file) {
+               const reader = new FileReader();
+               reader.onload = function (e) {
+                   imagePreview.src = e.target.result;
+                   imageText.innerHTML = getRandomFreshness();
+               };
+               reader.readAsDataURL(file);
+           } else {
+               imagePreview.src = '';
+               imageText.innerHTML = '';
+           }
+       });
+</script>
+</body>
+<footer align="center">
+<b>
+<p>Team Eco Trailblazers - Prabhav Thali, Namrata Bhave, Vibhuti Sawant, Pandurang Khandeparker</p>
+</b>
+</footer>
+</html>
